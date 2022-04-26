@@ -1,0 +1,75 @@
+﻿@model Dia_Supermarket.Models.tb_Products
+@{
+    ViewBag.Title = "View Product";
+    Layout = "~/Views/Shared/Admin/_LayoutBasic_Admin.cshtml";
+}
+
+
+<div class="card-box pd-20 mb-30 px-2">
+    <div class="clearfix">
+        <div class="pull-left">
+            <h4 class="text-blue h4 mb-30">Product Details</h4>
+        </div>
+        <div class="pull-right">
+            <a href="@Url.Action("ProductsList", "Admin")" class="btn btn-primary btn-sm scroll-click"><span class="icon-copy ion-ios-pricetag"></span> &nbsp;ALL PRODUCTS</a>
+        </div>
+    </div>
+
+    <table class="table details-product">
+
+        <tbody>
+            <tr>
+                <th>Product Name</th>
+                <td>@Html.DisplayFor(model => model.product_name)</td>
+            </tr>
+            <tr>
+                <th>Product Image</th>
+                <td><img src="@Html.DisplayFor(model => model.product_image)" style="max-height: 200px" /></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>PKR @Html.DisplayFor(model => model.price)</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>@Html.DisplayFor(model => model.stock) Units</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>@Html.DisplayFor(model => model.tb_Categories.cat_name)</td>
+            </tr>
+            <tr>
+                <th>SKU</th>
+                <td>@Html.DisplayFor(model => model.sku)</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>@Html.DisplayFor(model => model.long_description)</td>
+            </tr>
+            <tr>
+                <th>Last Updated</th>
+                <td>@Html.DisplayFor(model => model.updated_at)</td>
+            </tr>
+            <tr>
+                <th>Updated By</th>
+                <td>@Html.DisplayFor(model => model.tb_Admins.first_name) @Html.DisplayFor(model => model.tb_Admins.last_name)</td>
+            </tr>
+            <tr>
+                <th>Inserted at</th>
+                <td>@Html.DisplayFor(model => model.inserted_at)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="clearfix">
+        <div class="pull-left">
+            <a href="@Url.Action("DeleteProduct", "Admin", new { id = Model.product_id })" class="btn btn-primary btn-sm scroll-click"><i class="icon-copy fa fa-trash" aria-hidden="true"></i> &nbsp;DELETE PRODUCT</a>
+        </div>
+        <div class="pull-right">
+            <a href="@Url.Action("EditProduct", "Admin", new { id = Model.product_id })" class="btn btn-primary btn-sm scroll-click"><i class="icon-copy fa fa-pencil" aria-hidden="true"></i> &nbsp;EDIT PRODUCT</a>
+        </div>
+    </div>
+
+
+</div>
+

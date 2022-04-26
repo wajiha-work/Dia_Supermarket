@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_dia_supermarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Admins">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" />
+          <Property Name="contact_num" Type="varchar" MaxLength="15" />
+          <Property Name="email_address" Type="varchar" MaxLength="50" />
+          <Property Name="admin_password" Type="varchar" MaxLength="20" />
+          <Property Name="user_address" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="postal_code" Type="int" />
+          <Property Name="gender" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="nationality" Type="varchar" MaxLength="15" />
+          <Property Name="NIC_num" Type="varchar" MaxLength="30" />
+          <Property Name="join_date" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="verified_user" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_Categories">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_name" Type="varchar" MaxLength="100" />
+          <Property Name="inserted_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by_admin" Type="int" />
+          <Property Name="cat_image" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="order_date" Type="datetime" />
+          <Property Name="sub_total" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="shipping_cost" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="order_status" Type="varchar" MaxLength="20" />
+          <Property Name="status_date" Type="datetime" />
+          <Property Name="remarks" Type="varchar" MaxLength="100" />
+          <Property Name="updated_by_admin" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Orders_Summary">
+          <Key>
+            <PropertyRef Name="order_detail_id" />
+          </Key>
+          <Property Name="order_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="unit_price" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Products">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="100" />
+          <Property Name="sku" Type="varchar" MaxLength="100" />
+          <Property Name="product_image" Type="varchar(max)" />
+          <Property Name="long_description" Type="varchar" MaxLength="250" />
+          <Property Name="price" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="stock" Type="int" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="inserted_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by_admin" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Products_Rating">
+          <Key>
+            <PropertyRef Name="rate_id" />
+          </Key>
+          <Property Name="rate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="rating" Type="int" />
+          <Property Name="rated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" />
+          <Property Name="contact_num" Type="varchar" MaxLength="15" />
+          <Property Name="email_address" Type="varchar" MaxLength="50" />
+          <Property Name="user_password" Type="varchar" MaxLength="20" />
+          <Property Name="user_address" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="postal_code" Type="int" />
+          <Property Name="gender" Type="varchar" MaxLength="10" />
+          <Property Name="join_date" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="updated_by_admin" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Wishlist">
+          <Key>
+            <PropertyRef Name="wish_id" />
+          </Key>
+          <Property Name="wish_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__tb_Catego__updat__32E0915F">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Categories" Type="Self.tb_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Categories">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__order__44FF419A">
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="0..1" />
+          <End Role="tb_Orders_Summary" Type="Self.tb_Orders_Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Orders">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tb_Orders_Summary">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__produ__45F365D3">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Orders_Summary" Type="Self.tb_Orders_Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Orders_Summary">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__updat__4222D4EF">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Orders">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__user___3C69FB99">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Orders">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__categ__36B12243">
+          <End Role="tb_Categories" Type="Self.tb_Categories" Multiplicity="0..1" />
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categories">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tb_Products">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__produ__4E88ABD4">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Products_Rating" Type="Self.tb_Products_Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Products_Rating">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__updat__398D8EEE">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Products">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__user___4D94879B">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Products_Rating" Type="Self.tb_Products_Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Products_Rating">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Users__update__2E1BDC42">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Users">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Wishli__produ__4AB81AF0">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Wishlist" Type="Self.tb_Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Wishlist">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Wishli__user___49C3F6B7">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Wishlist" Type="Self.tb_Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Wishlist">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_dia_supermarketModelStoreContainer">
+          <EntitySet Name="tb_Admins" EntityType="Self.tb_Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Categories" EntityType="Self.tb_Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Orders" EntityType="Self.tb_Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Orders_Summary" EntityType="Self.tb_Orders_Summary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Products" EntityType="Self.tb_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Products_Rating" EntityType="Self.tb_Products_Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Users" EntityType="Self.tb_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Wishlist" EntityType="Self.tb_Wishlist" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Catego__updat__32E0915F" Association="Self.FK__tb_Catego__updat__32E0915F">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Categories" EntitySet="tb_Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__order__44FF419A" Association="Self.FK__tb_Orders__order__44FF419A">
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+            <End Role="tb_Orders_Summary" EntitySet="tb_Orders_Summary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__produ__45F365D3" Association="Self.FK__tb_Orders__produ__45F365D3">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Orders_Summary" EntitySet="tb_Orders_Summary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__updat__4222D4EF" Association="Self.FK__tb_Orders__updat__4222D4EF">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__user___3C69FB99" Association="Self.FK__tb_Orders__user___3C69FB99">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__categ__36B12243" Association="Self.FK__tb_Produc__categ__36B12243">
+            <End Role="tb_Categories" EntitySet="tb_Categories" />
+            <End Role="tb_Products" EntitySet="tb_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__produ__4E88ABD4" Association="Self.FK__tb_Produc__produ__4E88ABD4">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Products_Rating" EntitySet="tb_Products_Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__updat__398D8EEE" Association="Self.FK__tb_Produc__updat__398D8EEE">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Products" EntitySet="tb_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__user___4D94879B" Association="Self.FK__tb_Produc__user___4D94879B">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Products_Rating" EntitySet="tb_Products_Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Users__update__2E1BDC42" Association="Self.FK__tb_Users__update__2E1BDC42">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Users" EntitySet="tb_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Wishli__produ__4AB81AF0" Association="Self.FK__tb_Wishli__produ__4AB81AF0">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Wishlist" EntitySet="tb_Wishlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Wishli__user___49C3F6B7" Association="Self.FK__tb_Wishli__user___49C3F6B7">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Wishlist" EntitySet="tb_Wishlist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_dia_supermarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Admins">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contact_num" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="postal_code" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="nationality" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NIC_num" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="join_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Categories" Relationship="Self.FK__tb_Catego__updat__30F848ED" FromRole="tb_Admins" ToRole="tb_Categories" />
+          <NavigationProperty Name="tb_Orders" Relationship="Self.FK__tb_Orders__updat__403A8C7D" FromRole="tb_Admins" ToRole="tb_Orders" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_Produc__updat__37A5467C" FromRole="tb_Admins" ToRole="tb_Products" />
+          <NavigationProperty Name="tb_Users" Relationship="Self.FK__tb_Users__update__2C3393D0" FromRole="tb_Admins" ToRole="tb_Users" />
+          <Property Name="verified_user" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_Categories">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="inserted_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by_admin" Type="Int32" />
+          <NavigationProperty Name="tb_Admins" Relationship="Self.FK__tb_Catego__updat__30F848ED" FromRole="tb_Categories" ToRole="tb_Admins" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_Produc__categ__34C8D9D1" FromRole="tb_Categories" ToRole="tb_Products" />
+          <Property Name="cat_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="order_date" Type="DateTime" Precision="3" />
+          <Property Name="sub_total" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="shipping_cost" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="order_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status_date" Type="DateTime" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_by_admin" Type="Int32" />
+          <NavigationProperty Name="tb_Admins" Relationship="Self.FK__tb_Orders__updat__403A8C7D" FromRole="tb_Orders" ToRole="tb_Admins" />
+          <NavigationProperty Name="tb_Orders_Summary" Relationship="Self.FK__tb_Orders__order__4316F928" FromRole="tb_Orders" ToRole="tb_Orders_Summary" />
+          <NavigationProperty Name="tb_Users" Relationship="Self.FK__tb_Orders__user___3A81B327" FromRole="tb_Orders" ToRole="tb_Users" />
+        </EntityType>
+        <EntityType Name="tb_Orders_Summary">
+          <Key>
+            <PropertyRef Name="order_detail_id" />
+          </Key>
+          <Property Name="order_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="unit_price" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="tb_Orders" Relationship="Self.FK__tb_Orders__order__4316F928" FromRole="tb_Orders_Summary" ToRole="tb_Orders" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_Orders__produ__440B1D61" FromRole="tb_Orders_Summary" ToRole="tb_Products" />
+        </EntityType>
+        <EntityType Name="tb_Products">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sku" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="product_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="long_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="inserted_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by_admin" Type="Int32" />
+          <NavigationProperty Name="tb_Admins" Relationship="Self.FK__tb_Produc__updat__37A5467C" FromRole="tb_Products" ToRole="tb_Admins" />
+          <NavigationProperty Name="tb_Categories" Relationship="Self.FK__tb_Produc__categ__34C8D9D1" FromRole="tb_Products" ToRole="tb_Categories" />
+          <NavigationProperty Name="tb_Orders_Summary" Relationship="Self.FK__tb_Orders__produ__440B1D61" FromRole="tb_Products" ToRole="tb_Orders_Summary" />
+          <NavigationProperty Name="tb_Products_Rating" Relationship="Self.FK__tb_Produc__produ__4CA06362" FromRole="tb_Products" ToRole="tb_Products_Rating" />
+          <NavigationProperty Name="tb_Wishlist" Relationship="Self.FK__tb_Wishli__produ__48CFD27E" FromRole="tb_Products" ToRole="tb_Wishlist" />
+        </EntityType>
+        <EntityType Name="tb_Products_Rating">
+          <Key>
+            <PropertyRef Name="rate_id" />
+          </Key>
+          <Property Name="rate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="rated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_Produc__produ__4CA06362" FromRole="tb_Products_Rating" ToRole="tb_Products" />
+          <NavigationProperty Name="tb_Users" Relationship="Self.FK__tb_Produc__user___4BAC3F29" FromRole="tb_Products_Rating" ToRole="tb_Users" />
+        </EntityType>
+        <EntityType Name="tb_Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contact_num" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="postal_code" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="join_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_by_admin" Type="Int32" />
+          <NavigationProperty Name="tb_Admins" Relationship="Self.FK__tb_Users__update__2C3393D0" FromRole="tb_Users" ToRole="tb_Admins" />
+          <NavigationProperty Name="tb_Orders" Relationship="Self.FK__tb_Orders__user___3A81B327" FromRole="tb_Users" ToRole="tb_Orders" />
+          <NavigationProperty Name="tb_Products_Rating" Relationship="Self.FK__tb_Produc__user___4BAC3F29" FromRole="tb_Users" ToRole="tb_Products_Rating" />
+          <NavigationProperty Name="tb_Wishlist" Relationship="Self.FK__tb_Wishli__user___47DBAE45" FromRole="tb_Users" ToRole="tb_Wishlist" />
+        </EntityType>
+        <EntityType Name="tb_Wishlist">
+          <Key>
+            <PropertyRef Name="wish_id" />
+          </Key>
+          <Property Name="wish_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_Wishli__produ__48CFD27E" FromRole="tb_Wishlist" ToRole="tb_Products" />
+          <NavigationProperty Name="tb_Users" Relationship="Self.FK__tb_Wishli__user___47DBAE45" FromRole="tb_Wishlist" ToRole="tb_Users" />
+        </EntityType>
+        <Association Name="FK__tb_Catego__updat__30F848ED">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Categories" Type="Self.tb_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Categories">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__updat__403A8C7D">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Orders">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__updat__37A5467C">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Products">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Users__update__2C3393D0">
+          <End Role="tb_Admins" Type="Self.tb_Admins" Multiplicity="0..1" />
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Admins">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="tb_Users">
+              <PropertyRef Name="updated_by_admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__categ__34C8D9D1">
+          <End Role="tb_Categories" Type="Self.tb_Categories" Multiplicity="0..1" />
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categories">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="tb_Products">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__order__4316F928">
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="0..1" />
+          <End Role="tb_Orders_Summary" Type="Self.tb_Orders_Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Orders">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tb_Orders_Summary">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__user___3A81B327">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Orders">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Orders__produ__440B1D61">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Orders_Summary" Type="Self.tb_Orders_Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Orders_Summary">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__produ__4CA06362">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Products_Rating" Type="Self.tb_Products_Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Products_Rating">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Wishli__produ__48CFD27E">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_Wishlist" Type="Self.tb_Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tb_Wishlist">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__user___4BAC3F29">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Products_Rating" Type="Self.tb_Products_Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Products_Rating">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Wishli__user___47DBAE45">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_Wishlist" Type="Self.tb_Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tb_Wishlist">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_dia_supermarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Admins" EntityType="Self.tb_Admins" />
+          <EntitySet Name="tb_Categories" EntityType="Self.tb_Categories" />
+          <EntitySet Name="tb_Orders" EntityType="Self.tb_Orders" />
+          <EntitySet Name="tb_Orders_Summary" EntityType="Self.tb_Orders_Summary" />
+          <EntitySet Name="tb_Products" EntityType="Self.tb_Products" />
+          <EntitySet Name="tb_Products_Rating" EntityType="Self.tb_Products_Rating" />
+          <EntitySet Name="tb_Users" EntityType="Self.tb_Users" />
+          <EntitySet Name="tb_Wishlist" EntityType="Self.tb_Wishlist" />
+          <AssociationSet Name="FK__tb_Catego__updat__30F848ED" Association="Self.FK__tb_Catego__updat__30F848ED">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Categories" EntitySet="tb_Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__updat__403A8C7D" Association="Self.FK__tb_Orders__updat__403A8C7D">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__updat__37A5467C" Association="Self.FK__tb_Produc__updat__37A5467C">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Products" EntitySet="tb_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Users__update__2C3393D0" Association="Self.FK__tb_Users__update__2C3393D0">
+            <End Role="tb_Admins" EntitySet="tb_Admins" />
+            <End Role="tb_Users" EntitySet="tb_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__categ__34C8D9D1" Association="Self.FK__tb_Produc__categ__34C8D9D1">
+            <End Role="tb_Categories" EntitySet="tb_Categories" />
+            <End Role="tb_Products" EntitySet="tb_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__order__4316F928" Association="Self.FK__tb_Orders__order__4316F928">
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+            <End Role="tb_Orders_Summary" EntitySet="tb_Orders_Summary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__user___3A81B327" Association="Self.FK__tb_Orders__user___3A81B327">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Orders__produ__440B1D61" Association="Self.FK__tb_Orders__produ__440B1D61">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Orders_Summary" EntitySet="tb_Orders_Summary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__produ__4CA06362" Association="Self.FK__tb_Produc__produ__4CA06362">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Products_Rating" EntitySet="tb_Products_Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Wishli__produ__48CFD27E" Association="Self.FK__tb_Wishli__produ__48CFD27E">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_Wishlist" EntitySet="tb_Wishlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__user___4BAC3F29" Association="Self.FK__tb_Produc__user___4BAC3F29">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Products_Rating" EntitySet="tb_Products_Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Wishli__user___47DBAE45" Association="Self.FK__tb_Wishli__user___47DBAE45">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_Wishlist" EntitySet="tb_Wishlist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_dia_supermarketModelStoreContainer" CdmEntityContainer="db_dia_supermarketEntities">
+          <EntitySetMapping Name="tb_Admins">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Admins">
+              <MappingFragment StoreEntitySet="tb_Admins">
+                <ScalarProperty Name="verified_user" ColumnName="verified_user" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="contact_num" ColumnName="contact_num" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+                <ScalarProperty Name="user_address" ColumnName="user_address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="NIC_num" ColumnName="NIC_num" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Categories">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Categories">
+              <MappingFragment StoreEntitySet="tb_Categories">
+                <ScalarProperty Name="cat_image" ColumnName="cat_image" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+                <ScalarProperty Name="inserted_at" ColumnName="inserted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by_admin" ColumnName="updated_by_admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Orders">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Orders">
+              <MappingFragment StoreEntitySet="tb_Orders">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+                <ScalarProperty Name="shipping_cost" ColumnName="shipping_cost" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="status_date" ColumnName="status_date" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="updated_by_admin" ColumnName="updated_by_admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Orders_Summary">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Orders_Summary">
+              <MappingFragment StoreEntitySet="tb_Orders_Summary">
+                <ScalarProperty Name="order_detail_id" ColumnName="order_detail_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Products">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Products">
+              <MappingFragment StoreEntitySet="tb_Products">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="product_image" ColumnName="product_image" />
+                <ScalarProperty Name="long_description" ColumnName="long_description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="inserted_at" ColumnName="inserted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by_admin" ColumnName="updated_by_admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Products_Rating">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Products_Rating">
+              <MappingFragment StoreEntitySet="tb_Products_Rating">
+                <ScalarProperty Name="rate_id" ColumnName="rate_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="rated_at" ColumnName="rated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Users">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Users">
+              <MappingFragment StoreEntitySet="tb_Users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="contact_num" ColumnName="contact_num" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_address" ColumnName="user_address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by_admin" ColumnName="updated_by_admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Wishlist">
+            <EntityTypeMapping TypeName="db_dia_supermarketModel.tb_Wishlist">
+              <MappingFragment StoreEntitySet="tb_Wishlist">
+                <ScalarProperty Name="wish_id" ColumnName="wish_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

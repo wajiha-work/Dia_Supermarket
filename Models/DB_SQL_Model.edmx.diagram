@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="775fe6f9b90647ec83bf6cd0ef46a455" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Admins" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Categories" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Orders" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Orders_Summary" Width="1.5" PointX="8.125" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Products" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Products_Rating" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Users" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_dia_supermarketModel.tb_Wishlist" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Catego__updat__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Orders__updat__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Produc__updat__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Users__update__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Produc__categ__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Orders__order__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Orders__user___3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Orders__produ__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Produc__produ__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Wishli__produ__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Produc__user___4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="db_dia_supermarketModel.FK__tb_Wishli__user___47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

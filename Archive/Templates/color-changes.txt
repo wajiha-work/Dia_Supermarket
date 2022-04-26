@@ -1,0 +1,6 @@
+#1b00ff  => #4cbb17 (blue to green)
+#1502bd  => #358a0c;
+
+
+sidebar black
+0b132b => #358a0c;

@@ -1,0 +1,34 @@
+We are about to start project iA, before that we need database ready.
+So, your task today is to contemplate idea and complete its database.
+
+Idea:
+We are iA going to work on eCommerce project; Web Application for a Fresh Products Grocery Store (Dia Superstore).
+
+This store has 4 categories along with mentioned products:
+
+1. Fruits: Mango, Orange, Grapes, Apple, Banana, Pineappls, Peach, Watermelon, Guava, etc.
+2. Vegetables: Potatoes, Tomatoes, Garlic, Ginger, Carrots, Capsicum, Spring Onions, Cabbage, Curry leaves, etc.
+3. Dairy Products: Milk, Butter, Cheese, Yougurt, Eggs
+4. Breakfast items: Bread, Honey, Jam, Jelly, etc.
+
+Website will iA have following pages: Shop, Product details, About, Contact, Login, Register, Cart, etc.
+
+Users will visit our website, will add products to cart and checkout process will be followed to confirm the order. They can create their account for storing information so if they come back next time they wont have to enter all details again.
+
+In user account:
+1. Users can view all orders he/she placed along with details like which products were ordered, what was the total, when order was placed, etc.
+4. Add products to wishlist/favourites
+2. They can edit or delete their accounts.
+3. Rate Product
+
+There will be seperate Admin web application iA too where admins will be able to manipulate:
+- Categories (CRUD)
+- Products (CRUD)
+- Users (CRUD)
+- Orders (CRUD)
+- Generate various reports like sales in a months, top selling products, most popular product etc.
+
+TO-DO:
+1.Reading all specifications, find tables and their relations.
+2. Research what attributes each table must have. (for product details I checked chase.pk products and for user details I followed dummy cart-checkout till confirm order process at zanjabeelbookstore.com/ website)
+3. Write queries to implement tables and insert records.

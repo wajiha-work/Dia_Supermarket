@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/Admin/_LayoutBasic_Admin.cshtml";
+}
+
+<div class="card-box pd-20 height-100-p mb-30">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <img src="~/Templates/Admin/vendors/images/banner-img.png" alt="">
+        </div>
+        <div class="col-md-8">
+            <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                Welcome back <div class="weight-600 font-30 text-blue">@Session["admin_name"]!</div>
+            </h4>
+            <p class="font-18 max-width-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-3 mb-30">
+        <div class="card-box widget-style1">
+            <div class="h4 mb-0 text-green"># @ViewBag.PendingOrders</div>
+            <div class="weight-600 font-14">Pending Orders</div>
+        </div>
+    </div>
+    <div class="col-xl-3 mb-30">
+        <div class="card-box widget-style1">
+            <div class="h4 mb-0 text-green"># @ViewBag.ShippedOrders</div>
+            <div class="weight-600 font-14">Shipped Orders</div>
+        </div>
+    </div>
+    <div class="col-xl-3 mb-30">
+        <div class="card-box widget-style1">
+            <div class="h4 mb-0 text-green"># @ViewBag.CompletedOrders</div>
+            <div class="weight-600 font-14">Completed Orders</div>
+        </div>
+    </div>
+    <div class="col-xl-3 mb-30">
+        <div class="card-box widget-style1">
+            <div class="h4 mb-0 text-green">PKR @ViewBag.TotalEarning</div>
+            <div class="weight-600 font-14">Total Earnings</div>
+        </div>
+    </div>
+
+</div>
+<div class="card-box mb-30">
+    <h2 class="h4 pd-20">Best Selling Products</h2>
+    <table class="data-table table nowrap">
+        <thead>
+            <tr>
+                <th class="table-plus datatable-nosort">Product</th>
+                <th>Name</th>
+                <th class="defaultSort">Sales</th>
+                <th>Price <span class="text-blue">(PKR)</span></th>
+                <th>Stock <span class="text-blue">(Units)</span></th>
+                <th>Category</th>
+                <th class="datatable-nosort">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.BestSellers)
+            {
+                <tr>
+                    <td class="table-plus">
+                        <img src="@item.product_image" width="70" height="70" alt="">
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ViewProduct", "Admin", new { id = item.product_id })" class="font-16 text-blue">@item.product_name</a>
+                    </td>
+                    <td>@item.sales</td>
+
+                    <td>@item.price</td>
+                    <td>@item.stock</td>
+                    <td>@item.cat_name</td>
+
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="@Url.Action("ViewProduct", "Admin", new { id = item.product_id })"><i class="dw dw-eye"></i> View</a>
+                                <a class="dropdown-item" href="@Url.Action("EditProduct", "Admin", new { id = item.product_id })"><i class="dw dw-edit2"></i> Edit</a>
+                                <a class="dropdown-item" href="@Url.Action("DeleteProduct", "Admin", new { id = item.product_id })"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

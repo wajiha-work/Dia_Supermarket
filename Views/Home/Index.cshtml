@@ -1,0 +1,311 @@
+﻿@model IEnumerable<Dia_Supermarket.Models.tb_Products>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/Front/_LayoutBasic_Front.cshtml";
+}
+
+
+<section id="home-section" class="hero">
+    <div class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image: url('/Templates/Front/images/bg_1.jpg');">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-12 ftco-animate text-center bg-banner">
+                        <h1 class="mb-2">We serve Fresh Vegetables &amp; Fruits</h1>
+                        <h2 class="subheading mb-4">The easiest diet is, you know, eat vegetables, eat fresh food.</h2>
+                        <p><a href="#" class="btn btn-primary">View Details</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url('/Templates/Front/images/snack-4689116_1920.jpg'); ">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-sm-12 ftco-animate text-center bg-banner">
+                        <h1 class="mb-2">100% Organic Dairy Products</h1>
+                        <h2 class="subheading mb-4">Good bread is the most fundamentally satisfying of all foods; and good bread with fresh butter, the greatest of feasts.</h2>
+                        <p><a href="#" class="btn btn-primary">View Details</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row no-gutters ftco-services">
+            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services mb-md-0 mb-4">
+                    <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+                        <span class="flaticon-shipped"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Free Shipping</h3>
+                        <span>On order over PKR 3000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services mb-md-0 mb-4">
+                    <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+                        <span class="flaticon-diet"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Always Fresh</h3>
+                        <span>Product well package</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services mb-md-0 mb-4">
+                    <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+                        <span class="flaticon-award"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Superior Quality</h3>
+                        <span>Quality Products</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services mb-md-0 mb-4">
+                    <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+                        <span class="flaticon-customer-service"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Support</h3>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- categories section start here -->
+
+<section class="ftco-section ftco-category ftco-no-pt">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Fresh &amp; Organic</span>
+                <h2 class="mb-4">Categories</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-around">
+            <div class="cat-card">
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/image_6.jpg');">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0"><a href="#">Vegetables</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/cherries-1503974_640.jpg'); ">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0"><a href="#">Fruits</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/milk-2474993_640.jpg'); ">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0"><a href="#">Diary Products</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-card">
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/bread-5671124_640.jpg'); ">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0"><a href="#">Breakfast Items</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- categories section end here -->
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Our Products</span>
+                <h2 class="mb-4">Featured Products</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="product text-center">
+                        <a href="@Url.Action("SingleProduct", "Home", new { id = item.product_id })" class="img-prod">
+                            <img class="img-fluid" style="height: 180px" src="@Html.DisplayFor(modelItem => item.product_image)" alt="Colorlib Template">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="#">@Html.DisplayFor(modelItem => item.product_name)</a></h3>
+                            <p>@Html.DisplayFor(modelItem => item.tb_Categories.cat_name)</p>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price"><span>PKR @Html.DisplayFor(modelItem => item.price)</span></p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section img" style="background-image: url('/Templates/Front/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+                <span class="subheading">Best Price For You</span>
+                <h2 class="mb-4">Deal of the day</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                <h3><a href="#">Spinach</a></h3>
+                <span class="price">PKR 100 <a href="#">now PKR 35 only</a></span>
+                @*<div id="timer" class="d-flex mt-5">
+                    <div class="time" id="days"></div>
+                    <div class="time pl-3" id="hours"></div>
+                    <div class="time pl-3" id="minutes"></div>
+                    <div class="time pl-3" id="seconds"></div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section testimony-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <span class="subheading">Testimony</span>
+                <h2 class="mb-4">Our satisfied customer says</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel">
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url('/Templates/Front/images/avatars-male.png')">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Dia Supermarket catches all sort of buyers... from lower middle class to upper class... one stop shopping solution for everyone.</p>
+                                <p class="name">Mahir Fareed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url('/Templates/Front/images/avatars-male.png')">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">After having experience from Dia Supermarket it becomes my monthly routine to visit and buy stuff from here.</p>
+                                <p class="name">Adam Bin Muhammad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url('/Templates/Front/images/avatars-girl.png')">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Good store with nice experience.</p>
+                                <p class="name">Taliyah Murad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url('/Templates/Front/images/avatars-male.png')">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Dia Supermarket is great by rates and availability of every fresh item you need like vegetable, fruits, dairy products, etc.</p>
+                                <p class="name">Fateh Ramzal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url('/Templates/Front/images/avatars-girl.png')">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">It has spaciously arranged corridors as compared to other grocery stores.</p>
+                                <p class="name">Kashmala Mubeen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+            <div class="col-md-6">
+                <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+                <span>Get e-mail updates about our latest shops and special offers</span>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                        <input type="text" class="form-control" placeholder="Enter email address">
+                        <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

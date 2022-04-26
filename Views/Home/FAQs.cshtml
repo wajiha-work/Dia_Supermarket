@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "FAQs";
+    Layout = "~/Views/Shared/Front/_LayoutBasic_Front.cshtml";
+}
+
+
+<div class="hero-wrap hero-bread" style="background-image: url('/Templates/Front/images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index", "Home")">Home</a></span> <span>FAQs</span></p>
+                <h1 class="mb-0 bread">FAQs</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <span class="subheading">FAQs</span>
+                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <div>
+                    <h5>
+                        What is Dia Supermarket?
+                    </h5>
+                    <p>
+                        Dia Supermarket is an e-commerce initiative for selling fresh products.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        Do you have any loyalty program?
+                    </h5>
+                    <p>
+                        No, we do not offer any loyalty program.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        How can I pay for my order?
+                    </h5>
+                    <p>
+                        You can pay through Cash on Delivery.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        Can you ship orders all over Pakistan?
+                    </h5>
+                    <p>
+                        Yes, currently we ship in over 800 cites in Pakistan.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        What are the delivery charges?
+                    </h5>
+                    <p>
+                        Please visit <a class="text-green" href="@Url.Action("ShippingInformation", "Home")">Shipping Information</a> page for more information.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        How can I return a product?
+                    </h5>
+                    <p>
+                        Please visit <a class="text-green" href="@Url.Action("ReturnsAndExchange", "Home")">Returns & Exchange</a> page for more information.
+                    </p>
+                </div>
+                <div>
+                    <h5>
+                        Do you verify orders?
+                    </h5>
+                    <p>
+                        Yes, before processing any order our customer service team will call you on your mentioned cell phone number to verify order.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

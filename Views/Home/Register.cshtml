@@ -1,0 +1,144 @@
+﻿@model Dia_Supermarket.Models.tb_Users
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Front/_LayoutBasic_Front.cshtml";
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/Templates/Front/images/olive-oil-1412361_1920.jpg'); padding: 50px ">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-6 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index", "Home")">Home</a></span> <span>Register</span></p>
+                <h1 class="mb-0 bread">Register</h1>
+            </div>
+            <div class="col-md-6 ftco-animate text-center">
+                <div class="row block-9">
+                    <div class="col-md-12 order-md-last d-flex">
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "bg-white p-5 contact-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <h4 class="text-green">Register to Dia Supermarket</h4>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.first_name, new
+                                {
+                                    htmlAttributes = new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "First Name"
+                                    }
+                                })
+                                @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
+                                @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.email_address, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            type = "email",
+                                            placeholder = "Email Address"@*, required = "required"*@ }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.email_address, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    @Html.EditorFor(model => model.user_password, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            type = "password",
+                                            placeholder = "Password"@*, required = "required"*@}
+                                    })
+                                    @Html.ValidationMessageFor(model => model.user_password, "", new { @class = "text-danger small font-weight-bold" })
+                                </div>
+                                <div class="col-6">
+                                    @Html.EditorFor(model => model.confirm_password, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    @class = "form-control",
+                                                    type = "password",
+                                                    placeholder = "Confirm Password"@*, required = "required"*@}
+                                            })
+                                            @Html.ValidationMessageFor(model => model.confirm_password, "", new { @class = "text-danger small font-weight-bold" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.contact_num, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            type = "tel",
+                                            placeholder = "Contact Number as 0333(-)1234567" }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.contact_num, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.user_address, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Address"@*, required = "required"*@ }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.user_address, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.city, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "City"@*, required = "required"*@ }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.country, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Country"@*, required = "required"*@ }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.country, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.postal_code, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            type = "number",@*min="10000", max = "99999",*@ placeholder = "Postal Code"@*, required = "required"*@ }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.postal_code, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                <div class="radio text-center">
+                                    <label class="mx-5" style="color: black;"> @Html.RadioButtonFor(model => model.gender, "male") Male </label>
+                                    <label class="mx-5" style="color: black;"> @Html.RadioButtonFor(model => model.gender, "female") Female </label>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Register" class="btn btn-primary py-3 px-5">
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

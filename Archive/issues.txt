@@ -1,0 +1,20 @@
+Admin - anyone shouldn't register. ✔
+Image Upload - Should be in common folder. ❌
+Catergories - image add db ✔ + CRUD left. [anas + shahzaib]
+Users - CRUD [add edit -> naseer + list delete -> khubaib]
+Orders - CRUD (Dummy insert in DB) (Add products in order is difficult)
+Products list - data table use ✔
+
+
+MISC.
+Session variables of both name proper ✔
+LoginModel password rename and implement ✔
+Dashboards of both set ✔
+
+FRONT:
+Theme set ✔
+About us, Contact Us pages ✔
+Sepcific links show for logged in user ✔
+Logout ✔
+Edit profile [ahmed]
+Delete account (soft delete)

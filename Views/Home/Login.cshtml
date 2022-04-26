@@ -1,0 +1,55 @@
+﻿@model Dia_Supermarket.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Front/_LayoutBasic_Front.cshtml";
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/Templates/Front/images/vegetables-752153_1920.jpg'); padding: 50px ">
+    <div class="container">
+        @if (@TempData["success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@TempData["success"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-6 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index", "Home")">Home</a></span> <span>Login</span></p>
+                <h1 class="mb-0 bread">Login</h1>
+            </div>
+            <div class="col-md-6 ftco-animate text-center">
+                <div class="row block-9">
+                    <div class="col-md-12 order-md-last d-flex">
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "bg-white p-5 contact-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <h4 class="text-green">Login to Dia Supermarket</h4>
+                            <p class="mb-3 text-danger small font-weight-bold text-center">
+                                @Html.ValidationMessage("InvalidLoginError")
+                            </p>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.email_address, new { htmlAttributes = new { @class = "form-control", placeholder = "Email address" } })
+                                @Html.ValidationMessageFor(model => model.email_address, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { type = "password", @class = "form-control", placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger small font-weight-bold" })
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn btn-primary py-3 px-5">
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
