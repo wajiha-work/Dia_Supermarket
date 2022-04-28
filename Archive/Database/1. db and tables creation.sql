@@ -4,7 +4,7 @@ DROP DATABASE db_dia_supermarket;
 CREATE DATABASE db_dia_supermarket;
 USE db_dia_supermarket;
 
-CREATE TABLE tb_ADMINS
+CREATE TABLE tb_Admins
 (
 	admin_id INT PRIMARY KEY IDENTITY(1,1),
 	first_name VARCHAR(100) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE tb_ADMINS
 ALTER TABLE tb_Admins
 	ADD verified_user bit NOT NULL DEFAULT 0;
 
-CREATE TABLE tb_USERS
+CREATE TABLE tb_Users
 (
 	user_id INT PRIMARY KEY IDENTITY(1,1),
 	first_name VARCHAR(100) NOT NULL,
@@ -55,9 +55,10 @@ CREATE TABLE tb_Categories
 );
 
 ALTER TABLE tb_Categories
-	ADD cat_image VARCHAR(MAX) /*NOT NULL*/;
+	ADD cat_image VARCHAR(MAX) /*NOT NULL*/; 
 
-CREATE TABLE tb_PRODUCTS
+
+CREATE TABLE tb_Products
 (
 	product_id INT PRIMARY KEY IDENTITY(1,1),
 	product_name VARCHAR(100) NOT NULL UNIQUE,
@@ -72,7 +73,7 @@ CREATE TABLE tb_PRODUCTS
 	updated_by_admin INT NOT NULL FOREIGN KEY REFERENCES tb_ADMINS(admin_id)
 );
 
-CREATE TABLE tb_ORDERS
+CREATE TABLE tb_Orders
 (
 	order_id INT PRIMARY KEY IDENTITY(100,1),
 	user_id INT NOT NULL FOREIGN KEY REFERENCES tb_USERS(user_id),
@@ -86,7 +87,7 @@ CREATE TABLE tb_ORDERS
 );
 
 -- relation b/w order and products table M-M
-CREATE TABLE tb_ORDER_DETAILS
+CREATE TABLE tb_Orders_Summary
 (
 	order_detail_id INT PRIMARY KEY IDENTITY(1,1),
 	order_id INT NOT NULL FOREIGN KEY REFERENCES tb_ORDERS(order_id),
@@ -96,7 +97,7 @@ CREATE TABLE tb_ORDER_DETAILS
 );
 
 -- relation b/w User and Products M-M
-CREATE TABLE tb_WISHLIST
+CREATE TABLE tb_Wishlist
 (
 	wish_id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT NOT NULL FOREIGN KEY REFERENCES tb_USERS(user_id),
@@ -104,7 +105,7 @@ CREATE TABLE tb_WISHLIST
 );
 
 -- relation b/w User and Products M-M
-CREATE TABLE tb_PRODUCT_RATINGS
+CREATE TABLE tb_Products_Rating
 (
 	rate_id INT PRIMARY KEY IDENTITY(1,1),
 	user_id INT NOT NULL FOREIGN KEY REFERENCES tb_USERS(user_id),

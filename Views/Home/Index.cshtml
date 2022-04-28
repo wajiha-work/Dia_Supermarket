@@ -104,34 +104,18 @@
     </div>
     <div class="container">
         <div class="d-flex flex-wrap justify-content-around">
-            <div class="cat-card">
-                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/image_6.jpg');">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Vegetables</a></h2>
+
+            @foreach (var item in ViewBag.Categories)
+            {
+                <div class="cat-card">
+                    <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('@item.cat_image');">
+                        <div class="text px-3 py-1">
+                            <h2 class="mb-0"><a href="#">@item.cat_name</a></h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="cat-card">
-                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/cherries-1503974_640.jpg'); ">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Fruits</a></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cat-card">
-                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/milk-2474993_640.jpg'); ">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Diary Products</a></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cat-card">
-                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('/Templates/Front/images/bread-5671124_640.jpg'); ">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">Breakfast Items</a></h2>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </section>

@@ -41,6 +41,7 @@
         @Html.AntiForgeryToken()
 
         @Html.HiddenFor(model => model.product_id)
+        @Html.HiddenFor(model => model.inserted_at)
 
         <div class="form-group row">
             <label class="col-sm-12 col-md-2 col-form-label">Product Name</label>

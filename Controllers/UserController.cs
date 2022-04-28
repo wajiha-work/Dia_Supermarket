@@ -4,15 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Dia_Supermarket.Common;
 
 namespace Dia_Supermarket.Controllers
 {
     public class UserController : Controller
     {
-        [AuthorizeUser]
         public ActionResult Logout()
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
             Session["user_id"] = null;
             Session["user_name"] = null;
 
@@ -21,33 +24,48 @@ namespace Dia_Supermarket.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [AuthorizeUser]
         public ActionResult OrdersHistory(int? id)
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
-        [AuthorizeUser]
         public ActionResult Wishlist(int? id)
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
-        [AuthorizeUser]
         public ActionResult EditProfile(int? id)
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
-        [AuthorizeUser]
         public ActionResult Checkout(int? id)
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
-        [AuthorizeUser]
         public ActionResult PlaceOrder(int? id)
         {
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
     }

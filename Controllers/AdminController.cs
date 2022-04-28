@@ -17,13 +17,12 @@ namespace Dia_Supermarket.Controllers
 
 
         // GET: Admin
-        [Authorize]
         public ActionResult Index()
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             // pending orders
             string[] statuses = { "waiting", "confirmed" };
@@ -139,9 +138,13 @@ namespace Dia_Supermarket.Controllers
             return View(login_form);
         }
 
-        [Authorize]
         public ActionResult Logout()
         {
+            if (Session["admin_id"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
             Session["admin_id"] = null;
             Session["admin_name"] = null;
 
@@ -151,13 +154,12 @@ namespace Dia_Supermarket.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult EditProfile()
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             int loggen_in_admin_id = Convert.ToInt32(Session["admin_id"]);
             tb_Admins admin = db.tb_Admins.Find(loggen_in_admin_id);
@@ -184,13 +186,12 @@ namespace Dia_Supermarket.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult AddProduct()
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             // select box of category name
             ViewBag.CategoriesList = new SelectList(db.tb_Categories, "cat_id", "cat_name");
@@ -210,6 +211,13 @@ namespace Dia_Supermarket.Controllers
                 if (isProductExists)
                 {
                     ModelState.AddModelError("product_name", "Product already exists");
+                    return View(product);
+                }
+
+                var isSKUexists = db.tb_Products.Any(x => x.sku.Equals(product.sku));
+                if (isSKUexists)
+                {
+                    ModelState.AddModelError("sku", "SKU already registered");
                     return View(product);
                 }
 
@@ -236,13 +244,12 @@ namespace Dia_Supermarket.Controllers
             return View(product);
         }
 
-        [Authorize]
         public ActionResult ProductsList()
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             var products = db.tb_Products.Include(x => x.tb_Categories);
 
@@ -250,13 +257,12 @@ namespace Dia_Supermarket.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult DeleteProduct(int? id)
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             if (id == null)
             {
@@ -287,13 +293,12 @@ namespace Dia_Supermarket.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult ViewProduct(int? id)
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             if (id == null)
             {
@@ -312,13 +317,12 @@ namespace Dia_Supermarket.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult EditProduct(int? id)
         {
-            //if (Session["admin_id"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["admin_id"] == null)
+            {
+               return RedirectToAction("Login", "Admin");
+            }
 
             if (id == null)
             {
@@ -349,6 +353,13 @@ namespace Dia_Supermarket.Controllers
                 if (isProductExists)
                 {
                     ModelState.AddModelError("product_name", "Product already exists");
+                    return View(product_form);
+                }
+
+                var isSKUexists = db.tb_Products.Any(x => x.sku.Equals(product_form.sku) && x.product_id != product_form.product_id);
+                if (isSKUexists)
+                {
+                    ModelState.AddModelError("sku", "SKU already registered");
                     return View(product_form);
                 }
 

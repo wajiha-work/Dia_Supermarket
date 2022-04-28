@@ -17,7 +17,8 @@ namespace Dia_Supermarket.Controllers
         public ActionResult Index()
         {
             var products = db.tb_Products.OrderByDescending(x => x.updated_at).Take(8).ToList();
-
+            ViewBag.Categories = db.tb_Categories.OrderBy(x => x.inserted_at).ToList();
+            
             return View(products);
         }
 
@@ -199,9 +200,38 @@ namespace Dia_Supermarket.Controllers
             return View();
         }
 
-        public ActionResult AddToCart()
+        public ActionResult AddToCart(int ? id, string actionMethod)
         {
-            return View();
+            var cart = new List<Cart_Item>();
+            var product = db.tb_Products.Find(id);
+
+            if(Session["Cart"] != null)
+            {
+                cart = (List<Cart_Item>)Session["Cart"];
+            }
+
+            
+            var item = cart.Find(x => x.product_id == id);
+
+            if(item == null)
+            {
+                cart.Add(new Cart_Item()
+                {
+                    product_id = product.product_id,
+                    product_name = product.product_name,
+                    product_image = product.product_image,
+                    price = product.price,
+                    quantity = 1
+                });
+            }
+            else
+            {
+                item.quantity++;
+            }
+
+            Session["Cart"] = cart;
+
+            return RedirectToAction(actionMethod, "Home", new { id = id });
         }
 
         public ActionResult DisplayCart()

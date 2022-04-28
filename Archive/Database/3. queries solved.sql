@@ -18,6 +18,7 @@ SELECT COUNT(order_id) FROM tb_Orders WHERE order_status IN ('waiting', 'confirm
 -- Total Earnings
 SELECT SUM(sub_total) FROM tb_Orders WHERE order_status = 'delivered';
 
+
 -- best selling products
 SELECT P.product_name, P.product_image, P.price, P.stock, C.cat_name, SUM(OS.quantity) AS 'SALES'
 	FROM tb_Categories C INNER JOIN tb_Products P 
