@@ -209,10 +209,7 @@ namespace Dia_Supermarket.Controllers
             {
                 cart = (List<Cart_Item>)Session["Cart"];
             }
-
-            
             var item = cart.Find(x => x.product_id == id);
-
             if(item == null)
             {
                 cart.Add(new Cart_Item()
@@ -228,8 +225,22 @@ namespace Dia_Supermarket.Controllers
             {
                 item.quantity++;
             }
-
             Session["Cart"] = cart;
+            return RedirectToAction(actionMethod, "Home", new { id = id });
+        }
+
+        public ActionResult RemoveFromCart(int? id, string actionMethod)
+        {
+            var cart = new List<Cart_Item>();
+            
+            if(Session["Cart"] != null)
+            {
+                cart = (List<Cart_Item>)Session["Cart"];
+
+                var item = cart.Find(x => x.product_id == id);
+                cart.Remove(item);
+                Session["Cart"] = (cart.Count == 0) ? null : cart;
+            }
 
             return RedirectToAction(actionMethod, "Home", new { id = id });
         }

@@ -86,14 +86,32 @@
                     </li>
 
                     <li class="dropdown dropdown-cart">
+                        @{ 
+                            if(Session["Cart"] != null)
+                            {
+                                ViewBag.cart = (List<Dia_Supermarket.Models.Cart_Item>)Session["Cart"];
+
+                                ViewBag.count = ViewBag.cart.Count;
+                                ViewBag.total = (decimal)0.00;
+                                foreach(var item in ViewBag.cart)
+                                {
+                                    ViewBag.total += item.price * item.quantity;
+                                }
+                            }
+                            else
+                            {
+                                ViewBag.count = 0;
+                                ViewBag.total = 0.00;
+                            }
+                        }
                         <div>
                             <button type="button" class="btn-cart btn-green" data-toggle="dropdown">
-                                <span class="icon-shopping_cart"></span>&nbsp;<span class="badge badge-pill badge-danger">3</span>
+                                <span class="icon-shopping_cart"></span>&nbsp;<span class="badge badge-pill badge-danger">@ViewBag.count</span>
                             </button>
                             <div class="dropdown-menu">
                                 <div class="row total-header-section">
                                     <div class="col-lg-12 col-sm-12 col-12 total-section text-center">
-                                        <p>Total: <span class="text-green">PKR 2,978.24</span></p>
+                                        <p>Total: <span class="text-green">PKR @ViewBag.total</span></p>
                                     </div>
                                 </div>
                                 <div style="max-height: 250px; overflow-y: scroll; overflow-x: hidden;">
@@ -111,7 +129,7 @@
                                                         <span class="price text-green"> PKR @item.price</span> <span class="price"> Quantity: @item.quantity</span>
                                                     </div>
                                                     <div class="col-lg-1 col-sm-1 col-1 p-0">
-                                                        <span class="ion-ios-close"></span>
+                                                        <a href="@Url.Action("RemoveFromCart", "Home", new { id = @item.product_id, actionMethod = "Shop"})"><span class="ion-ios-close"></span></a>
                                                     </div>
                                                 </div>
                                             </div>
